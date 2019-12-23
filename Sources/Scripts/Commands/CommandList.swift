@@ -1,13 +1,13 @@
 enum CommandList: String, CaseIterable {
-    case today, tomorrow
+    case today, todo
 
     var overview: String {
         switch self {
         case .today:
             return "Print date of today"
 
-        case .tomorrow:
-            return "Print date of tomorrow"
+        case .todo:
+            return "Create todo"
         }
     }
 
@@ -16,8 +16,8 @@ enum CommandList: String, CaseIterable {
         case .today:
             return TodayCommand.self
 
-        case .tomorrow:
-            return TodayCommand.self
+        case .todo:
+            return TodoCommand.self
         }
     }
 }
