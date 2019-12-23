@@ -15,8 +15,8 @@ binder.bind(
     to: { $0.shouldPrintVersion = $1 }
 )
 
-
-//let todayParser = originParser.add(subparser: "today", overview: "sub command overview")
+originParser.add(subparser: "today", overview: "Print date of today")
+originParser.add(subparser: "tomorrow", overview: "Print date of tomorrow")
 
 func printToday() {
     let dateComponents = Calendar.autoupdatingCurrent.dateComponents([.year, .month, .day], from: Date())
@@ -27,20 +27,12 @@ func printToday() {
 do {
     let result = try originParser.parse(arguments)
 
-    var options = Options()
-    try binder.fill(parseResult: result, into: &options)
-    print(options.shouldPrintVersion ?? "None")
-
-    if let _: String = result.get(originParser.add(positional: "today")) {
+    if result.subparser(originParser) == "today" {
         printToday()
     }
-
-//    if let _ = result.subparser(todayParser) {
-//        printToday()
-//    }
-//    else {
-//        print("Nothing to show.")
-//    }
+    if result.subparser(originParser) == "tomorrow" {
+        print("tomorrow")
+    }
 } catch {
     print(error)
 }
