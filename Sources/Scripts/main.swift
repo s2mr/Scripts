@@ -1,5 +1,6 @@
 import SPMUtility
 import Foundation
+import Cocoa
 
 let originParser = ArgumentParser(usage: "TODO: usage", overview: "My custom commands.")
 let version = originParser.add(option: "--version", kind: Bool.self, usage: "Print current scripts version")
@@ -24,3 +25,8 @@ do {
 } catch {
     print(error)
 }
+
+let delegate = AppDelegate()
+let app = NSApplication.shared
+app.delegate = delegate
+app.run()
