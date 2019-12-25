@@ -1,14 +1,14 @@
 import Foundation
 import AppKit
 
-class AppDelegate: NSObject, NSApplicationDelegate {
-    let window = NSWindow(contentRect: NSMakeRect(200, 200, 400, 200),
-                          styleMask: [.titled, .closable, .miniaturizable, .resizable],
-                          backing: .buffered,
-                          defer: false,
-                          screen: nil)
-
+final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
+        let window = NSWindow(contentRect: NSMakeRect(200, 200, 400, 200),
+                              styleMask: [.titled, .closable, .miniaturizable, .resizable],
+                              backing: .buffered,
+                              defer: false,
+                              screen: nil)
+
         window.makeKeyAndOrderFront(nil)
         let field = NSTextView(frame: window.contentView!.bounds)
         field.backgroundColor = .white
@@ -20,13 +20,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     field.textStorage?.append(NSAttributedString(string: str))
                 }
             }
-            app.terminate(self)
+            //            app.terminate(self)
         }
     }
 }
 
 struct TodoCommand: Commands {
+    private let app = NSApplication.shared
+    private let appDelegate = AppDelegate()
+
     func execute() {
+        app.delegate = appDelegate
+        app.run()
+
 //        let windowCotnroller = NSWindowController()
 //        let viewController = MyViewController()
 //        viewController.view.layer?.backgroundColor = NSColor.red.cgColor
