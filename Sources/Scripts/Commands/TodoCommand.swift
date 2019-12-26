@@ -1,49 +1,6 @@
 import Foundation
-import AppKit
-
-final class AppDelegate: NSObject, NSApplicationDelegate {
-    func applicationDidFinishLaunching(_ notification: Notification) {
-        let window = NSWindow(contentRect: NSMakeRect(200, 200, 400, 200),
-                              styleMask: [.titled, .closable, .miniaturizable, .resizable],
-                              backing: .buffered,
-                              defer: false,
-                              screen: nil)
-
-        window.makeKeyAndOrderFront(nil)
-        let field = NSTextView(frame: window.contentView!.bounds)
-        field.backgroundColor = .white
-        field.isContinuousSpellCheckingEnabled = true
-        window.contentView?.addSubview(field)
-        DispatchQueue(label: "background").async {
-            while let str = readLine(strippingNewline: false) {
-                DispatchQueue.main.async {
-                    field.textStorage?.append(NSAttributedString(string: str))
-                }
-            }
-            //            app.terminate(self)
-        }
-    }
-}
 
 struct TodoCommand: Commands {
-    private let app = NSApplication.shared
-    private let appDelegate = AppDelegate()
-
     func execute() {
-        app.delegate = appDelegate
-        app.run()
-
-//        let windowCotnroller = NSWindowController()
-//        let viewController = MyViewController()
-//        viewController.view.layer?.backgroundColor = NSColor.red.cgColor
-//        windowCotnroller.contentViewController = viewController
-//        windowCotnroller.showWindow(self)
-//        let url = URL(fileURLWithPath: "/System/Applications/Utilities/Terminal.app", isDirectory: true)
-//        NSWorkspace.shared.open(url)
-//        let task = Process()
-//        task.launchPath = "/usr/bin/env"
-//        task.arguments = ["echo Makefile | xargs vi"]
-//        task.launch()
-//        task.waitUntilExit()
     }
 }

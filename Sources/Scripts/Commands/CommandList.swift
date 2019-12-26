@@ -1,5 +1,5 @@
 enum CommandList: String, CaseIterable {
-    case today, todo
+    case today, todo, window
 
     var overview: String {
         switch self {
@@ -8,6 +8,9 @@ enum CommandList: String, CaseIterable {
 
         case .todo:
             return "Create todo"
+
+        case .window:
+            return "Show window"
         }
     }
 
@@ -18,6 +21,9 @@ enum CommandList: String, CaseIterable {
 
         case .todo:
             return TodoCommand.self
+
+        case .window:
+            return WindowCommand.self
         }
     }
 }
