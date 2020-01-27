@@ -17,13 +17,12 @@ struct OpenXcodeCommand: Commands {
                 }
         }
 
-        files.forEach { print($0.pathExtension) }
-
         guard !files.isEmpty else {
-            return print("Xcode project file not found")
+            return print(.warn + "Xcode project file not found")
         }
 
         let preferredOpenFile = files.sorted(by: { lhs, rhs in lhs.absoluteString < rhs.absoluteString })[0]
+        print(.rocket + "Found \(preferredOpenFile.pathExtension).")
         NSWorkspace.shared.open(preferredOpenFile)
     }
 }
