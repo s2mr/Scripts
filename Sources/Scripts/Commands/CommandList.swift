@@ -1,5 +1,5 @@
 enum CommandList: String, CaseIterable {
-    case today, todo, window
+    case today, todo, window, xc
 
     var overview: String {
         switch self {
@@ -11,6 +11,9 @@ enum CommandList: String, CaseIterable {
 
         case .window:
             return "Show window"
+
+        case .xc:
+            return "Open xcode file in current directory"
         }
     }
 
@@ -24,6 +27,9 @@ enum CommandList: String, CaseIterable {
 
         case .window:
             return WindowCommand.self
+
+        case .xc:
+            return OpenXcodeCommand.self
         }
     }
 }
