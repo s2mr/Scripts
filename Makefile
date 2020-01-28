@@ -2,3 +2,6 @@
 generate:
 	swift package generate-xcodeproj
 
+.PHONY: build
+build:
+	swift build
