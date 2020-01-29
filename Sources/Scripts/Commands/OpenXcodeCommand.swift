@@ -22,7 +22,7 @@ struct OpenXcodeCommand: Commands {
         }
 
         let preferredOpenFile = files.sorted(by: { lhs, rhs in lhs.absoluteString > rhs.absoluteString })[0]
-        print(.rocket + "  Found \(preferredOpenFile.pathExtension).")
+        print(.rocket + "  Open \(preferredOpenFile.pathExtension).")
         NSWorkspace.shared.open(preferredOpenFile)
     }
 }
