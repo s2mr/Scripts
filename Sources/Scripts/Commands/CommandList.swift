@@ -1,3 +1,5 @@
+import ArgumentParser
+
 enum CommandList: String, CaseIterable {
     case today, todo, window, xc
 
@@ -17,7 +19,7 @@ enum CommandList: String, CaseIterable {
         }
     }
 
-    var command: Commands.Type {
+    var command: ParsableCommand.Type {
         switch self {
         case .today:
             return TodayCommand.self

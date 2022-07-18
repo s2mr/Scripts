@@ -1,8 +1,13 @@
 import Foundation
 import AppKit
+import ArgumentParser
 
-struct OpenXcodeCommand: Commands {
-    func execute() {
+struct OpenXcodeCommand: ParsableCommand {
+    static var configuration: CommandConfiguration {
+        CommandConfiguration(commandName: "xc")
+    }
+
+    func run() throws {
         let fileManager = FileManager.default
         let currentDirectoryURL = URL(fileURLWithPath: fileManager.currentDirectoryPath, isDirectory: true)
         let files = ((try? fileManager.contentsOfDirectory(at: currentDirectoryURL, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])) ?? [])

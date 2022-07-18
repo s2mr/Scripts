@@ -6,12 +6,12 @@ import PackageDescription
 let package = Package(
     name: "Scripts",
     dependencies: [
-        .package(url: "https://github.com/apple/swift-package-manager.git", from: "0.3.0")
+        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.1.3")
     ],
     targets: [
         .target(
             name: "Scripts",
-            dependencies: ["SPMUtility"]),
+            dependencies: ["ArgumentParser"]),
         .testTarget(
             name: "ScriptsTests",
             dependencies: ["Scripts"]),

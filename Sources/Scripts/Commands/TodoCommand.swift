@@ -1,6 +1,7 @@
 import Foundation
+import ArgumentParser
 
-struct TodoCommand: Commands {
-    func execute() {
+struct TodoCommand: ParsableCommand {
+    func run() throws {
     }
 }

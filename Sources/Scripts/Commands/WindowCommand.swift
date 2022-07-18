@@ -1,7 +1,8 @@
 import AppKit
+import ArgumentParser
 
-final class WindowCommand: Commands {
-    func execute() {
+final class WindowCommand: ParsableCommand {
+    func run() throws {
         AppDelegate.shared.applicationDidFinishLaunching = { [weak self] in
             self?.showWindow()
         }
